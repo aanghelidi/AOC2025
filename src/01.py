@@ -5,13 +5,11 @@ from collections import defaultdict
 def count_extra(current_pos: int, rotation_char: str, distance: int) -> int:
     if rotation_char == "R":
         return (current_pos + distance) // 100
-    elif rotation_char == "L":
-        if distance < current_pos:
-            return 0
-        if current_pos == 0:
-            return (distance - 1) // 100
-        return 1 + (distance - current_pos) // 100
-    return 0
+    if distance < current_pos:
+        return 0
+    if current_pos == 0:
+        return (distance - 1) // 100
+    return 1 + (distance - current_pos) // 100
 
 
 with open(sys.argv[1]) as f:
